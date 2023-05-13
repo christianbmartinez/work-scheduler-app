@@ -39,27 +39,20 @@ $(function () {
   $('#8').text(localStorage.getItem('4PM'))
   $('#9').text(localStorage.getItem('5PM'))
 
-  // Format todays date
-  const today = dayjs().format('dddd, MMMM D, YYYY')
-  // Grab the id from the page
-  const currentDate = $('#currentDay')
-  // Assign the inner text of that ID with the formatted date
-  currentDate.text(today)
-  // Get our app ID and store it
-  const app = $('#app-container')
-  const date = new Date() // Get the date
-  const currentHour = date.getHours() // 24 hour format
-  // Loop through the app children, then loop through their children,
-  // compare the data-value attribute to the current hour and assign the proper class
-  for (let i = 0; i < app[0].children.length; i++) {
-    for (let j = 0; j < app[i].children.length; j++) {
-      if (app[i].children[j].getAttribute('data-value') < currentHour) {
-        app[i].children[j].classList.add('past')
-      } else if (app[i].children[j].getAttribute('data-value') == currentHour) {
-        app[i].children[j].classList.add('present')
-      } else {
-        app[i].children[j].classList.add('future')
-      }
+  // Assign the inner text of current day with the formatted date
+  $('#currentDay').text(dayjs().format('dddd, MMMM D, YYYY'))
+
+  // Get current hour in 24 hour format
+  const currentHour = new Date().getHours()
+
+  // Using .each() with jQuery, we can latch on to all .time-blocks and use the dom api to conditionally add the classes.
+  $('.time-block').each(function () {
+    if ($(this)[0].dataset.value < currentHour) {
+      this.classList.add('past')
+    } else if ($(this)[0].dataset.value == currentHour) {
+      this.classList.add('present')
+    } else {
+      this.classList.add('future')
     }
-  }
+  })
 })
