@@ -31,10 +31,13 @@
       <p id="currentDay" class="lead"></p>
     </header>
     <div class="container-fluid px-5 my-5">
+      <!-- Each row has a default time block class, which is updated conditionally via jquery -->
       <div class="row time-block" data-value="9">
         <div class="col-2 col-md-1 hour text-center py-3">9AM</div>
+        <!-- Each text area has a unique id -->
         <textarea id="1" class="col-8 col-md-10 description" rows="3">
         </textarea>
+        <!-- Each button has a unique id -->
         <button
           id="save-btn1"
           class="btn saveBtn col-2 col-md-1"
