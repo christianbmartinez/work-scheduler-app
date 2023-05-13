@@ -13,24 +13,22 @@ $(function () {
   const three = $('#hour-3')
   const four = $('#hour-4')
   const five = $('#hour-5')
-  // Get the hours that have passed since the app was launched. Minus it by 9, which is the starting time for our app
-  const hoursPassedSinceNine = dayjs().format('H') - 9
-  console.log('Hours passed since 9:', hoursPassedSinceNine, 'hours')
-  // Get the current hour, whether it's am or pm, and store it
-  const currentHour = dayjs().format('H')
-  // Loop through the app children, then loop through their children, and return the innerText. 9AM, 10AM, etc
-  for (let i = 0; i < app[0].children.length; i++) {
+  const date = new Date() // Get the date
+  const currentHour = date.getHours() // 24 hour format
+  // Loop through the app children, then loop through their children, 
+  // compare the data-value attribute to the current hour and assign the proper class
+    for (let i = 0; i < app[0].children.length; i++) {
     for (let j = 0; j < app[i].children.length; j++) {
-      if (app[i].children[j].innerText < currentHour) { 
-        console.log(app[i].children[j].innerText, currentHour)
+      if(app[i].children[j].getAttribute('data-value') < currentHour) {
         app[i].children[j].classList.add('past')
-      } else if (app[i].children[j].innerText === currentHour) {
+      } else if (app[i].children[j].getAttribute('data-value') === currentHour.toString()) {
         app[i].children[j].classList.add('present')
       } else {
         app[i].children[j].classList.add('future')
       }
     }
   }
+
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
