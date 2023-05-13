@@ -3,6 +3,10 @@ body {
   font-size: 16px;
 }
 
+button[disabled] {
+  background: gray;
+}
+
 textarea {
   background: transparent;
   border: none;
