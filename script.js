@@ -2,6 +2,26 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+  // Get our ids and store them into variables
+  const app = $('#app-container')
+  const nine = $('#hour-9')
+  const ten = $('#hour-10')
+  const eleven = $('#hour-11')
+  const twelve = $('#hour-12')
+  const one = $('#hour-1')
+  const two = $('#hour-2')
+  const three = $('#hour-3')
+  const four = $('#hour-4')
+  const five = $('#hour-5')
+  // Get the current hour, whether it's am or pm, and store it
+  const currentHour = dayjs().format('hhA')
+  // Loop through the app children, then loop through their children, and return the innerText. 9AM, 10AM, etc
+  for (let i = 0; i < app[0].children.length; i++) {
+    for (let j = 0; j < app[i].children.length; j++) {
+      console.log(app[i].children[j].innerText)
+    }
+  }
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
