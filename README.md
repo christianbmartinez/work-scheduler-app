@@ -7,5 +7,3 @@ A work scheduler task application that uses the local storage api and jquery.
 # Built with
 
 HTML, CSS, JS (jQuery)
-
-[View live](https://workschedulerapp.christianbmartinez.com/)
